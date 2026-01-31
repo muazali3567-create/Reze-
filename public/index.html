@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reze v1</title>
+</head>
+<body>
+  <h2>Reze</h2>
+
+  <input id="input" placeholder="Talk to Reze…" />
+  <button onclick="send()">Send</button>
+
+  <p id="response"></p>
+
+  <script>
+    async function send() {
+      const input = document.getElementById("input").value;
+
+      const res = await fetch("/talk", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input })
+      });
+
+      const data = await res.json();
+      document.getElementById("response").innerText = data.reply;
+
+      // Browser voice (Chromebook-safe)
+      const speech = new SpeechSynthesisUtterance(data.reply);
+      speech.rate = 1;
+      speech.pitch = 1;
+      speechSynthesis.speak(speech);
+    }
+  </script>
+</body>
+</html>
