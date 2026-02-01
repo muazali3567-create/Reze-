@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 app.post("/talk", (req, res) => {
   const userInput = req.body.message || "";
   res.json({
-    reply: `Hmph… "${userInput}"? You better not be wasting my time.`
+    reply:
   });
 });
 
