@@ -9,7 +9,6 @@
     "express": "^4.19.2"
   }
 }
-
 const voices = speechSynthesis.getVoices();
 const voice = voices.find(v => 
   v.name.includes("Google") && v.lang === "en-US"
