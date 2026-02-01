@@ -14,3 +14,7 @@ const voices = speechSynthesis.getVoices();
 const voice = voices.find(v => 
   v.name.includes("Google") && v.lang === "en-US"
 );
+utterance.voice = voice;
+utterance.rate = 0.95;   // slower = more natural
+utterance.pitch = 1.2;  // slightly higher
+utterance.volume = 1;
